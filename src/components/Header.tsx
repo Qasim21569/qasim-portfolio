@@ -36,19 +36,20 @@ const Header = () => {
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-pure-white shadow-lg border-b-2 border-soft-gray' 
+          ? 'bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-700' 
           : 'bg-transparent'
       }`}>
         <div className="container-custom">
           <div className="flex justify-between items-center py-4">
-            {/* Logo */}
+            {/* Logo - Full Name */}
             <div 
               onClick={() => scrollToSection('#home')}
               className="cursor-pointer group"
             >
-              <div className="text-2xl font-playfair font-bold text-vivid-cyan relative">
-                QK
-                <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-warm-coral rounded-full opacity-70 group-hover:opacity-100 transition-opacity"></div>
+              <div className="text-2xl font-playfair font-bold text-white relative">
+                <span className="text-cyan-400">Qasim</span>
+                <span className="text-white ml-2">Kharodia</span>
+                <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-full opacity-70 group-hover:opacity-100 transition-opacity animate-pulse"></div>
               </div>
             </div>
 
@@ -58,12 +59,10 @@ const Header = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`font-poppins font-medium transition-all duration-300 relative group ${
-                    isScrolled ? 'text-deep-charcoal' : 'text-pure-white'
-                  } hover:text-warm-coral`}
+                  className="font-poppins font-medium transition-all duration-300 relative group text-white hover:text-cyan-400"
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-warm-coral transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
                 </button>
               ))}
             </nav>
@@ -71,9 +70,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`md:hidden transition-colors duration-300 ${
-                isScrolled ? 'text-deep-charcoal' : 'text-pure-white'
-              }`}
+              className="md:hidden transition-colors duration-300 text-white"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -85,8 +82,8 @@ const Header = () => {
       <div className={`fixed inset-0 z-40 transition-all duration-300 ${
         isMobileMenuOpen ? 'visible opacity-100' : 'invisible opacity-0'
       }`}>
-        <div className="absolute inset-0 bg-deep-charcoal bg-opacity-90 backdrop-blur-sm"></div>
-        <div className={`absolute right-0 top-0 h-full w-4/5 bg-pure-white transform transition-transform duration-300 ${
+        <div className="absolute inset-0 bg-gray-900 bg-opacity-95 backdrop-blur-sm"></div>
+        <div className={`absolute right-0 top-0 h-full w-4/5 bg-gray-900 transform transition-transform duration-300 ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
           <div className="pt-20 px-6">
@@ -95,7 +92,7 @@ const Header = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left font-poppins font-medium text-xl text-deep-charcoal hover:text-warm-coral transition-colors duration-300"
+                  className="block w-full text-left font-poppins font-medium text-xl text-white hover:text-cyan-400 transition-colors duration-300"
                 >
                   {item.name}
                 </button>

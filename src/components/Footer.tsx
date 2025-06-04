@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ChevronUp, Github, Linkedin, X as TwitterIcon } from 'lucide-react';
 
@@ -64,12 +63,10 @@ const Footer = () => {
           {/* Brand & Description */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="text-3xl font-playfair font-bold text-cyan-400 relative">
-                QK
+              <div className="text-3xl font-playfair font-bold relative">
+                <span className="text-cyan-400">Qasim</span>
+                <span className="text-white ml-2">Kharodia</span>
                 <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full animate-pulse"></div>
-              </div>
-              <div className="font-poppins font-semibold text-lg">
-                Qasim Kharodia
               </div>
             </div>
             
