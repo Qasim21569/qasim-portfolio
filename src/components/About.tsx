@@ -124,9 +124,15 @@ const About = () => {
               <div className="relative">
                 <div className="w-32 md:w-40 lg:w-48 h-32 md:h-40 lg:h-48 rounded-xl md:rounded-2xl bg-gradient-to-br from-cyan-500 via-purple-500 to-pink-500 p-1">
                   <img
-                    src="public/Qasim imag.jpeg"
+                    src="/Qasim imag.jpeg"
                     alt="Qasim Kharodia"
                     className="w-full h-full rounded-xl md:rounded-2xl object-cover bg-gray-900"
+                    loading="lazy"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/placeholder.svg';
+                      target.onerror = null;
+                    }}
                   />
                 </div>
                 <div className="absolute -bottom-2 md:-bottom-4 -right-2 md:-right-4 w-8 md:w-10 lg:w-12 h-8 md:h-10 lg:h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg md:rounded-xl flex items-center justify-center">
