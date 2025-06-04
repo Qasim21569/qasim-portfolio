@@ -11,9 +11,6 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "overrides": {
-    "rollup": "3.29.4"
-  },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@hookform/resolvers": "^3.9.0",
@@ -79,6 +76,6 @@
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
-    "vite": "^5.1.4"
+    "vite": "^4.5.3"
   }
 }
