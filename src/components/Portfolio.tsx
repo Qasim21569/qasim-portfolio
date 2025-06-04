@@ -440,7 +440,7 @@ const Portfolio = () => {
 
                 {/* Right Column - Metrics & Testimonial */}
                 <div className="space-y-4 md:space-y-6">
-                  {/* Metrics */}
+                  {/* Metrics Section - Temporarily Disabled
                   <div className="space-y-3 md:space-y-4">
                     <h4 className="font-poppins font-semibold text-base md:text-lg text-white">Project Impact</h4>
                     <div className="grid grid-cols-1 gap-3 md:gap-4">
@@ -458,8 +458,9 @@ const Portfolio = () => {
                       </div>
                     </div>
                   </div>
+                  */}
 
-                  {/* Testimonial */}
+                  {/* Testimonial Section - Temporarily Disabled
                   <div className="bg-gray-800/50 rounded-lg p-4 md:p-6">
                     <h4 className="font-poppins font-semibold text-base md:text-lg text-white mb-3">Client Feedback</h4>
                     <blockquote className="font-inter text-gray-300 italic mb-3 md:mb-4 text-sm md:text-base">
@@ -472,6 +473,7 @@ const Portfolio = () => {
                       {selectedProject.testimonial.role}
                     </div>
                   </div>
+                  */}
 
                   {/* Action Buttons */}
                   <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
