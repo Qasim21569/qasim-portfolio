@@ -4,10 +4,16 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/",
+  base: "./",
   build: {
     outDir: "dist",
-    sourcemap: true
+    sourcemap: true,
+    assetsDir: "assets",
+    rollupOptions: {
+      output: {
+        assetFileNames: "assets/[name].[ext]"
+      }
+    }
   },
   server: {
     host: "::",

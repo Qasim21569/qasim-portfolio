@@ -51,9 +51,9 @@ const About = () => {
   ];
 
   const stats = [
-    { number: '15+', label: 'Projects Completed', color: 'text-cyan-400' },
+    { number: '10+', label: 'Projects Completed', color: 'text-cyan-400' },
     { number: '100%', label: 'Client Satisfaction', color: 'text-emerald-400' },
-    { number: '48h', label: 'Response Time', color: 'text-purple-400' }
+    { number: '6h', label: 'Response Time', color: 'text-purple-400' }
   ];
 
   return (
@@ -124,13 +124,14 @@ const About = () => {
               <div className="relative">
                 <div className="w-32 md:w-40 lg:w-48 h-32 md:h-40 lg:h-48 rounded-xl md:rounded-2xl bg-gradient-to-br from-cyan-500 via-purple-500 to-pink-500 p-1">
                   <img
-                    src="/Qasim imag.jpeg"
+                    src="./Qasim imag.jpeg"
                     alt="Qasim Kharodia"
                     className="w-full h-full rounded-xl md:rounded-2xl object-cover bg-gray-900"
                     loading="lazy"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/placeholder.svg';
+                      console.error(`Failed to load image: ${target.src}`);
+                      target.src = './placeholder.svg';
                       target.onerror = null;
                     }}
                   />

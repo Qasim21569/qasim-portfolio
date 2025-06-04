@@ -121,22 +121,22 @@ const Hero = () => {
 
             {/* Enhanced name display */}
             <div className="mb-4 md:mb-6 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
-              <h2 className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-100 to-gray-300 leading-none tracking-tight">
+              <h2 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-100 to-gray-300 leading-none tracking-tight">
                 QASIM
-                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-gray-400 mt-1">
+                <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-gray-400 mt-1">
                   Kharodia
                 </span>
               </h2>
             </div>
 
             {/* Dynamic headline with animated text */}
-            <h1 className="font-playfair font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-4 md:mb-6 leading-tight animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+            <h1 className="font-playfair font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 md:mb-6 leading-tight animate-fade-in-up" style={{animationDelay: '0.2s'}}>
               I craft modern{' '}
               <span className="relative inline-block">
                 <span 
-                  className={`inline-block px-2 md:px-4 py-1 md:py-2 rounded-lg md:rounded-xl font-semibold transition-all duration-500 ${
+                  className={`inline-block px-2 sm:px-3 md:px-4 lg:px-6 py-1 sm:py-1.5 md:py-2 lg:py-3 rounded-lg md:rounded-xl lg:rounded-2xl font-semibold transition-all duration-500 ${
                     isVisible ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-95 blur-sm'
-                  } ${rotatingWords[currentWordIndex].color} ${rotatingWords[currentWordIndex].accent} text-sm md:text-base lg:text-lg`}
+                  } ${rotatingWords[currentWordIndex].color} ${rotatingWords[currentWordIndex].accent} text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl`}
                 >
                   {rotatingWords[currentWordIndex].text}
                 </span>
@@ -145,7 +145,7 @@ const Hero = () => {
               for ambitious businesses
             </h1>
             
-            <p className="font-inter text-base md:text-lg lg:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl leading-relaxed animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+            <p className="font-inter text-lg md:text-xl lg:text-2xl text-gray-400 mb-6 md:mb-8 max-w-2xl leading-relaxed animate-fade-in-up" style={{animationDelay: '0.3s'}}>
               Computer Science student & freelance developer turning ideas into 
               <span className="text-vivid-cyan font-medium"> pixel-perfect</span>, 
               <span className="text-warm-coral font-medium"> performance-driven</span> digital experiences.
