@@ -1,11 +1,32 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ExternalLink, Github, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const filters = ['All', 'Landing Pages', 'eCommerce', 'Web Apps', 'Animations'];
 
@@ -141,36 +162,45 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="section-padding bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-40 left-40 w-80 h-80 bg-gradient-to-br from-rose-400 to-pink-400 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-40 right-40 w-96 h-96 bg-gradient-to-br from-purple-400 to-violet-400 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-pink-300 to-rose-300 rounded-full blur-2xl animate-float"></div>
+    <section 
+      ref={sectionRef}
+      id="portfolio" 
+      className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-white relative overflow-hidden"
+    >
+      {/* Background Effects */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full blur-3xl animate-pulse" style={{animationDelay: '3s'}}></div>
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom py-20 lg:py-32 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-playfair font-bold text-4xl lg:text-5xl text-deep-charcoal mb-6">
-            Featured <span className="text-gradient">Projects</span>
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          <div className="flex items-center justify-center space-x-4 mb-8">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-purple-400"></div>
+            <span className="font-inter text-sm font-medium text-gray-400 uppercase tracking-wider">PORTFOLIO</span>
+            <div className="w-12 h-px bg-gradient-to-r from-purple-400 to-transparent"></div>
+          </div>
+
+          <h2 className="font-playfair font-bold text-4xl lg:text-5xl mb-6">
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Projects</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-warm-coral to-purple-500 mx-auto mb-6"></div>
-          <p className="font-inter text-lg text-gray-600 max-w-3xl mx-auto">
+          
+          <p className="font-inter text-lg text-gray-300 max-w-3xl mx-auto">
             A curated selection of my favorite works—each blending design finesse with technical precision.
           </p>
         </div>
 
-        {/* Enhanced Filter Controls */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* Filter Controls */}
+        <div className={`flex flex-wrap justify-center gap-4 mb-12 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{transitionDelay: '200ms'}}>
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
               className={`px-6 py-3 rounded-full font-poppins font-medium transition-all duration-300 ${
                 activeFilter === filter
-                  ? 'bg-gradient-to-r from-vivid-cyan to-blue-500 text-white shadow-lg scale-105'
-                  : 'bg-white bg-opacity-70 text-gray-600 hover:bg-opacity-90 hover:text-vivid-cyan border border-gray-200'
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg scale-105'
+                  : 'bg-gray-800/50 backdrop-blur-sm text-gray-300 hover:text-white border border-gray-700/50 hover:border-purple-500/50'
               }`}
             >
               {filter}
@@ -178,12 +208,15 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Enhanced Project Grid */}
+        {/* Project Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group relative bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105"
+              className={`group relative bg-gray-800/30 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-gray-600/50 transition-all duration-500 cursor-pointer hover:scale-105 ${
+                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              }`}
+              style={{transitionDelay: `${300 + index * 150}ms`}}
               onClick={() => {
                 setSelectedProject(project);
                 setCurrentImageIndex(0);
@@ -196,7 +229,7 @@ const Portfolio = () => {
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <ExternalLink className="w-6 h-6 text-white" />
                 </div>
@@ -205,14 +238,14 @@ const Portfolio = () => {
               {/* Project Info */}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="px-3 py-1 bg-gradient-to-r from-vivid-cyan to-blue-500 text-white text-sm font-poppins font-medium rounded-full">
+                  <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-poppins font-medium rounded-full">
                     {project.category}
                   </span>
                 </div>
-                <h3 className="font-poppins font-semibold text-xl text-deep-charcoal mb-3 group-hover:text-vivid-cyan transition-colors duration-300">
+                <h3 className="font-poppins font-semibold text-xl text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="font-inter text-gray-600 text-sm leading-relaxed">
+                <p className="font-inter text-gray-300 text-sm leading-relaxed">
                   {project.description}
                 </p>
               </div>
@@ -222,17 +255,17 @@ const Portfolio = () => {
 
         {/* Enhanced Case Study Modal */}
         {selectedProject && (
-          <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center z-10">
-                <h3 className="font-playfair font-bold text-2xl text-deep-charcoal">
+          <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+            <div className="bg-gray-900 rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto border border-gray-700">
+              <div className="sticky top-0 bg-gray-900 border-b border-gray-700 p-6 flex justify-between items-center z-10">
+                <h3 className="font-playfair font-bold text-2xl text-white">
                   {selectedProject.title}
                 </h3>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors duration-300"
+                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-300"
                 >
-                  <X className="w-5 h-5 text-gray-600" />
+                  <X className="w-5 h-5 text-gray-300" />
                 </button>
               </div>
 
