@@ -89,7 +89,7 @@ const About = () => {
               <div className="space-y-4 text-gray-300 font-inter text-lg leading-relaxed">
                 <p>
                   I'm Qasim Kharodia, a passionate Computer Science student with an obsession for creating 
-                  digital experiences that don't just look good—they perform exceptionally.
+                  digital experiences that don't just look good, they perform exceptionally.
                 </p>
                 
                 <p>

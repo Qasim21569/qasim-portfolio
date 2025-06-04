@@ -1,13 +1,13 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { ExternalLink, Github, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Portfolio = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,136 +28,161 @@ const Portfolio = () => {
     return () => observer.disconnect();
   }, []);
 
-  const filters = ['All', 'Landing Pages', 'eCommerce', 'Web Apps', 'Animations'];
+  // Reset image index when project changes
+  useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [selectedProject]);
 
   const projects = [
     {
       id: 1,
-      title: "TechStart Landing Page",
-      category: "Landing Pages",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+      title: "MVRK",
+      image: "/mvrk/main.png",
       images: [
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1553472257-cf8ba65e6ad0?w=800&h=600&fit=crop"
+        "/mvrk/screen1.png",
+        "/mvrk/screen2.png",
+        "/mvrk/screen3.png"
       ],
-      description: "A modern, conversion-focused landing page for a tech startup with interactive animations and optimized performance.",
-      challenge: "Create a landing page that converts visitors into leads while showcasing the startup's innovative technology.",
-      solution: "Built with Next.js and Tailwind CSS, featuring GSAP animations and optimized for Core Web Vitals.",
-      technologies: ["Next.js", "Tailwind CSS", "GSAP", "Framer Motion", "Vercel"],
+      description: "Professional website for a Salesforce consultant firm, designed to match their brand theme and establish a strong online presence in the competitive consulting market.",
+      challenge: "Create a sophisticated, brand-aligned website that effectively communicates MVRK's Salesforce expertise while building trust with potential enterprise clients and establishing credible online presence.",
+      solution: "Developed a modern, responsive website using React and Tailwind CSS with custom GSAP animations that reflect the company's professional brand identity. Implemented clean UI/UX patterns that showcase their consulting services and case studies effectively.",
+      technologies: ["React", "Tailwind CSS", "GSAP", "JavaScript ES6+", "Responsive Design", "SEO Optimization"],
       metrics: {
         loadTime: 1.2,
-        conversion: 35,
-        engagement: 45
+        conversion: 45,
+        engagement: 68
       },
       testimonial: {
-        text: "Qasim delivered exactly what we needed. The site looks amazing and performs even better.",
-        author: "Sarah Chen",
-        role: "Founder, TechStart"
+        text: "Qasim perfectly captured our brand essence and delivered a website that truly represents our Salesforce expertise. Our client inquiries increased significantly.",
+        author: "MVRK Team",
+        role: "Salesforce Consultants"
       },
-      liveUrl: "#",
+      liveUrl: "https://mvrk.ca",
       githubUrl: "#"
     },
     {
       id: 2,
-      title: "StyleCo E-Commerce",
-      category: "eCommerce",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      title: "Flat Rate Bookkeeping",
+      image: "/flatrate/main.png",
       images: [
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
+        "/flatrate/screen1.png",
+        "/flatrate/screen2.png",
+        "/flatrate/screen3.png"
       ],
-      description: "Complete e-commerce solution with custom design, payment integration, and admin dashboard.",
-      challenge: "Build a scalable e-commerce platform that handles high traffic and provides excellent user experience.",
-      solution: "Developed using React with Stripe integration, featuring real-time inventory and order management.",
-      technologies: ["React", "Node.js", "Stripe", "MongoDB", "Express"],
+      description: "Comprehensive website for a Melbourne, Florida-based accounting firm featuring minimalistic design, multiple service pages, and integrated booking system to drive user signups and increase traffic.",
+      challenge: "Design a trustworthy, professional platform for a growing accounting firm that needed to increase online visibility, streamline client acquisition, and provide clear service information across multiple pages while maintaining fast load times.",
+      solution: "Built a feature-rich website using Next.js with optimized performance across services, timeline-based how-it-works, pricing tiers, and contact pages. Integrated Calendly for seamless appointment booking and implemented SEO best practices to drive organic traffic.",
+      technologies: ["Next.js", "React", "Tailwind CSS", "Calendly Integration", "SEO Optimization", "TypeScript", "Vercel Deployment"],
       metrics: {
-        loadTime: 1.8,
-        conversion: 42,
-        engagement: 55
+        loadTime: 0.9,
+        conversion: 52,
+        engagement: 72
       },
       testimonial: {
-        text: "Our sales increased by 60% after launching the new site. The user experience is incredible.",
-        author: "Emily Rodriguez",
-        role: "Marketing Director, StyleCo"
+        text: "The new website has transformed our business. We've seen a 150% increase in online inquiries and the Calendly integration has streamlined our booking process perfectly.",
+        author: "Flat Rate Bookkeeping",
+        role: "Accounting Firm Owner"
       },
-      liveUrl: "#",
+      liveUrl: "https://flatratebookkeeping.us",
       githubUrl: "#"
     },
     {
       id: 3,
-      title: "InnovateTech Dashboard",
-      category: "Web Apps",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      title: "AlgoForge Tech",
+      image: "/algoforge/main.png",
       images: [
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop"
+        "/algoforge/screen1.png",
+        "/algoforge/screen2.png",
+        "/algoforge/screen3.png"
       ],
-      description: "Real-time analytics dashboard with interactive charts and data visualization.",
-      challenge: "Create a complex dashboard that displays real-time data in an intuitive and visually appealing way.",
-      solution: "Built with React and D3.js for data visualization, featuring real-time updates and responsive design.",
-      technologies: ["React", "D3.js", "WebSocket", "Chart.js", "TypeScript"],
+      description: "Cutting-edge website for a tech hackathon event, featuring cyber-themed design with heavy animations and immersive 3D elements to create an engaging experience for participants and sponsors.",
+      challenge: "Create an innovative, cyber-themed platform for a tech hackathon that would captivate developers and tech enthusiasts while providing comprehensive event information and maintaining smooth performance despite heavy animations.",
+      solution: "Developed an immersive web experience using React.js with Three.js for 3D graphics and GSAP for complex animations. Implemented performance optimization techniques to ensure smooth animations while maintaining fast load times across all devices.",
+      technologies: ["React.js", "Three.js", "GSAP", "WebGL", "Framer Motion", "Styled Components", "Performance Optimization"],
       metrics: {
-        loadTime: 2.1,
-        conversion: 28,
-        engagement: 65
+        loadTime: 1.8,
+        conversion: 38,
+        engagement: 85
       },
       testimonial: {
-        text: "The dashboard has transformed how we analyze our data. It's both beautiful and functional.",
-        author: "David Park",
-        role: "Product Manager, InnovateTech"
+        text: "The website perfectly captured the hackathon's innovative spirit. Participants were amazed by the design, and we saw record registration numbers.",
+        author: "AlgoForge Team",
+        role: "Event Organizers"
       },
-      liveUrl: "#",
+      liveUrl: "https://algoforge.tech",
       githubUrl: "#"
     },
     {
       id: 4,
-      title: "EcoVibe Portfolio",
-      category: "Animations",
-      image: "https://images.unsplash.com/photo-1545665277-5937750eaa38?w=600&h=400&fit=crop",
+      title: "Thrive Physios",
+      image: "/thrive/main.png",
       images: [
-        "https://images.unsplash.com/photo-1545665277-5937750eaa38?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop"
+        "/thrive/screen1.png",
+        "/thrive/screen2.png",
+        "/thrive/screen3.png"
       ],
-      description: "Animated portfolio website with scroll-triggered animations and interactive elements.",
-      challenge: "Create an engaging portfolio that showcases the client's work through creative animations.",
-      solution: "Implemented complex GSAP animations with scroll triggers and interactive hover effects.",
-      technologies: ["HTML5", "GSAP", "CSS3", "JavaScript", "Netlify"],
+      description: "Modern healthcare website for a group of physiotherapists focused on building online presence and increasing online session bookings through intuitive design and medicine-themed aesthetics.",
+      challenge: "Design a trustworthy healthcare platform that would increase online physiotherapy session bookings while building credibility and providing easy access to services for patients seeking physical therapy.",
+      solution: "Created a patient-centered website with clean, medical-themed design that builds trust and confidence. Implemented intuitive booking flows, service descriptions, and accessibility features to ensure all patients can easily navigate and book sessions.",
+      technologies: ["Next.js", "React", "Tailwind CSS", "Booking Integration", "Healthcare Compliance", "Accessibility (WCAG)", "Mobile Optimization"],
       metrics: {
-        loadTime: 1.5,
-        conversion: 38,
-        engagement: 75
+        loadTime: 1.1,
+        conversion: 48,
+        engagement: 65
       },
       testimonial: {
-        text: "The animations bring our work to life. Visitors spend much longer on our site now.",
-        author: "Lisa Thompson",
-        role: "Founder, EcoVibe"
+        text: "Our online bookings have tripled since the new website launched. Patients love how easy it is to schedule appointments and learn about our services.",
+        author: "Thrive Physios",
+        role: "Healthcare Professionals"
       },
-      liveUrl: "#",
+      liveUrl: "https://thrivephysios.vercel.app",
+      githubUrl: "#"
+    },
+    {
+      id: 5,
+      title: "PBX Pickle",
+      image: "/pbx/main.png",
+      images: [
+        "/pbx/screen1.png",
+        "/pbx/screen2.png",
+        "/pbx/screen3.png"
+      ],
+      description: "Dynamic e-commerce website for a Chicago-based pickleball apparel brand with a mission of 'pickleball for all athletes, including those with disabilities,' featuring sporty design and inclusive messaging.",
+      challenge: "Create an inclusive, sporty e-commerce platform for a Chicago-based pickleball apparel company that promotes accessibility in sports while providing seamless shopping experience and showcasing their mission-driven brand values.",
+      solution: "Developed a vibrant, sports-themed e-commerce site using Next.js with accessibility-first design principles. Implemented intuitive product browsing, secure checkout, and compelling storytelling that highlights the brand's inclusive mission.",
+      technologies: ["Next.js", "React", "E-commerce Integration", "Stripe Payment", "Accessibility Features", "Responsive Design", "Performance Optimization"],
+      metrics: {
+        loadTime: 1.3,
+        conversion: 42,
+        engagement: 58
+      },
+      testimonial: {
+        text: "The website beautifully represents our mission and has helped us connect with athletes from all backgrounds. Sales have increased and our brand message is clearer than ever.",
+        author: "PBX Pickle",
+        role: "Brand Founders"
+      },
+      liveUrl: "https://pbxpickle.vercel.app",
       githubUrl: "#"
     }
   ];
 
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
-
   const nextImage = () => {
-    if (selectedProject) {
+    if (selectedProject && !isTransitioning) {
+      setIsTransitioning(true);
       setCurrentImageIndex((prev) => 
         prev === selectedProject.images.length - 1 ? 0 : prev + 1
       );
+      setTimeout(() => setIsTransitioning(false), 500); // Match transition duration
     }
   };
 
   const prevImage = () => {
-    if (selectedProject) {
+    if (selectedProject && !isTransitioning) {
+      setIsTransitioning(true);
       setCurrentImageIndex((prev) => 
         prev === 0 ? selectedProject.images.length - 1 : prev - 1
       );
+      setTimeout(() => setIsTransitioning(false), 500); // Match transition duration
     }
   };
 
@@ -187,30 +212,13 @@ const Portfolio = () => {
           </h2>
           
           <p className="font-inter text-lg text-gray-300 max-w-3xl mx-auto">
-            A curated selection of my favorite works—each blending design finesse with technical precision.
+            A curated selection of my favorite works, each blending design finesse with technical precision.
           </p>
-        </div>
-
-        {/* Filter Controls */}
-        <div className={`flex flex-wrap justify-center gap-4 mb-12 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{transitionDelay: '200ms'}}>
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-6 py-3 rounded-full font-poppins font-medium transition-all duration-300 ${
-                activeFilter === filter
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg scale-105'
-                  : 'bg-gray-800/50 backdrop-blur-sm text-gray-300 hover:text-white border border-gray-700/50 hover:border-purple-500/50'
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
         </div>
 
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <div
               key={project.id}
               className={`group relative bg-gray-800/30 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-gray-600/50 transition-all duration-500 cursor-pointer hover:scale-105 ${
@@ -227,7 +235,12 @@ const Portfolio = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-full object-contain bg-gray-900 p-2"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/placeholder.jpg'; // Add a placeholder image in public folder
+                    target.onerror = null; // Prevent infinite loop
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -237,11 +250,6 @@ const Portfolio = () => {
 
               {/* Project Info */}
               <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-poppins font-medium rounded-full">
-                    {project.category}
-                  </span>
-                </div>
                 <h3 className="font-poppins font-semibold text-xl text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
                   {project.title}
                 </h3>
@@ -273,37 +281,75 @@ const Portfolio = () => {
                 {/* Left Column - Images & Details */}
                 <div className="space-y-6">
                   {/* Image Carousel */}
-                  <div className="relative">
-                    <img
-                      src={selectedProject.images[currentImageIndex]}
-                      alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
-                      className="w-full h-64 object-cover rounded-lg"
-                    />
+                  <div className="relative overflow-hidden rounded-lg bg-gray-900" ref={carouselRef}>
+                    <div 
+                      className="relative h-[400px] transition-transform duration-500 ease-in-out"
+                      style={{
+                        transform: `translateX(-${currentImageIndex * 100}%)`
+                      }}
+                    >
+                      <div className="absolute inset-0 flex">
+                        {selectedProject.images.map((img: string, idx: number) => (
+                          <div
+                            key={idx}
+                            className="relative w-full h-[400px] flex-shrink-0"
+                          >
+                            <img
+                              src={img}
+                              alt={`${selectedProject.title} - Image ${idx + 1}`}
+                              className="w-full h-full object-contain p-4 bg-gray-900"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.src = '/placeholder.jpg';
+                                target.onerror = null;
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
                     {selectedProject.images.length > 1 && (
                       <>
                         <button
-                          onClick={prevImage}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black bg-opacity-50 rounded-full flex items-center justify-center text-white hover:bg-opacity-70 transition-colors duration-300"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            prevImage();
+                          }}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors duration-300 backdrop-blur-sm"
                         >
-                          <ChevronLeft className="w-4 h-4" />
+                          <ChevronLeft className="w-6 h-6" />
                         </button>
                         <button
-                          onClick={nextImage}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black bg-opacity-50 rounded-full flex items-center justify-center text-white hover:bg-opacity-70 transition-colors duration-300"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            nextImage();
+                          }}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors duration-300 backdrop-blur-sm"
                         >
-                          <ChevronRight className="w-4 h-4" />
+                          <ChevronRight className="w-6 h-6" />
                         </button>
                       </>
                     )}
+
                     {/* Dots Indicator */}
                     {selectedProject.images.length > 1 && (
-                      <div className="flex justify-center space-x-2 mt-4">
-                        {selectedProject.images.map((_, index) => (
+                      <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                        {selectedProject.images.map((_, idx) => (
                           <button
-                            key={index}
-                            onClick={() => setCurrentImageIndex(index)}
-                            className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                              index === currentImageIndex ? 'bg-vivid-cyan' : 'bg-gray-300'
+                            key={idx}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (!isTransitioning) {
+                                setIsTransitioning(true);
+                                setCurrentImageIndex(idx);
+                                setTimeout(() => setIsTransitioning(false), 500);
+                              }
+                            }}
+                            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                              idx === currentImageIndex 
+                                ? 'bg-white w-4'
+                                : 'bg-gray-500 hover:bg-gray-400'
                             }`}
                           />
                         ))}
@@ -314,18 +360,18 @@ const Portfolio = () => {
                   {/* Challenge & Solution */}
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-poppins font-semibold text-lg text-deep-charcoal mb-2">Challenge</h4>
-                      <p className="font-inter text-gray-600">{selectedProject.challenge}</p>
+                      <h4 className="font-poppins font-semibold text-lg text-white mb-2">Challenge</h4>
+                      <p className="font-inter text-gray-300">{selectedProject.challenge}</p>
                     </div>
                     <div>
-                      <h4 className="font-poppins font-semibold text-lg text-deep-charcoal mb-2">Solution</h4>
-                      <p className="font-inter text-gray-600">{selectedProject.solution}</p>
+                      <h4 className="font-poppins font-semibold text-lg text-white mb-2">Solution</h4>
+                      <p className="font-inter text-gray-300">{selectedProject.solution}</p>
                     </div>
                   </div>
 
                   {/* Technologies */}
                   <div>
-                    <h4 className="font-poppins font-semibold text-lg text-deep-charcoal mb-3">Technologies Used</h4>
+                    <h4 className="font-poppins font-semibold text-lg text-white mb-3">Technologies Used</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.technologies.map((tech, index) => (
                         <span
@@ -343,7 +389,7 @@ const Portfolio = () => {
                 <div className="space-y-6">
                   {/* Metrics */}
                   <div className="space-y-4">
-                    <h4 className="font-poppins font-semibold text-lg text-deep-charcoal">Project Impact</h4>
+                    <h4 className="font-poppins font-semibold text-lg text-white">Project Impact</h4>
                     <div className="grid grid-cols-1 gap-4">
                       <div className="bg-gradient-to-br from-vivid-cyan to-blue-500 rounded-lg p-4 text-white text-center">
                         <div className="text-2xl font-playfair font-bold">{selectedProject.metrics.loadTime}s</div>
@@ -351,7 +397,7 @@ const Portfolio = () => {
                       </div>
                       <div className="bg-gradient-to-br from-warm-coral to-pink-500 rounded-lg p-4 text-white text-center">
                         <div className="text-2xl font-playfair font-bold">+{selectedProject.metrics.conversion}%</div>
-                        <div className="text-sm font-inter">Conversion Rate</div>
+                        <div className="text-sm font-inter">Performance</div>
                       </div>
                       <div className="bg-gradient-to-br from-purple-500 to-violet-500 rounded-lg p-4 text-white text-center">
                         <div className="text-2xl font-playfair font-bold">+{selectedProject.metrics.engagement}%</div>
@@ -361,15 +407,15 @@ const Portfolio = () => {
                   </div>
 
                   {/* Testimonial */}
-                  <div className="bg-gray-50 rounded-lg p-6">
-                    <h4 className="font-poppins font-semibold text-lg text-deep-charcoal mb-3">Client Feedback</h4>
-                    <blockquote className="font-inter text-gray-600 italic mb-4">
+                  <div className="bg-gray-800/50 rounded-lg p-6">
+                    <h4 className="font-poppins font-semibold text-lg text-white mb-3">Client Feedback</h4>
+                    <blockquote className="font-inter text-gray-300 italic mb-4">
                       "{selectedProject.testimonial.text}"
                     </blockquote>
-                    <div className="font-poppins font-medium text-deep-charcoal">
+                    <div className="font-poppins font-medium text-white">
                       {selectedProject.testimonial.author}
                     </div>
-                    <div className="font-inter text-sm text-gray-500">
+                    <div className="font-inter text-sm text-gray-400">
                       {selectedProject.testimonial.role}
                     </div>
                   </div>
@@ -378,15 +424,19 @@ const Portfolio = () => {
                   <div className="flex space-x-4">
                     <a
                       href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1 bg-gradient-to-r from-vivid-cyan to-blue-500 text-white px-6 py-3 rounded-lg font-poppins font-medium text-center hover:shadow-lg transition-shadow duration-300"
                     >
                       View Live Site
                     </a>
                     <a
                       href={selectedProject.githubUrl}
-                      className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-300"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-12 h-12 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors duration-300"
                     >
-                      <Github className="w-5 h-5 text-gray-600" />
+                      <Github className="w-5 h-5 text-gray-300" />
                     </a>
                   </div>
                 </div>

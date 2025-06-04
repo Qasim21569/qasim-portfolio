@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -20,6 +19,7 @@ const Header = () => {
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
     { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Process', href: '#process' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -40,20 +40,8 @@ const Header = () => {
           : 'bg-transparent'
       }`}>
         <div className="container-custom">
-          <div className="flex justify-between items-center py-4">
-            {/* Logo - Full Name */}
-            <div 
-              onClick={() => scrollToSection('#home')}
-              className="cursor-pointer group"
-            >
-              <div className="text-2xl font-playfair font-bold text-white relative">
-                <span className="text-cyan-400">Qasim</span>
-                <span className="text-white ml-2">Kharodia</span>
-                <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-full opacity-70 group-hover:opacity-100 transition-opacity animate-pulse"></div>
-              </div>
-            </div>
-
-            {/* Desktop Navigation */}
+          <div className="flex justify-center items-center py-4">
+            {/* Desktop Navigation - Centered */}
             <nav className="hidden md:flex space-x-8">
               {navItems.map((item) => (
                 <button
@@ -70,7 +58,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden transition-colors duration-300 text-white"
+              className="md:hidden transition-colors duration-300 text-white absolute right-4"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

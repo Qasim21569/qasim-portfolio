@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronUp, Github, Linkedin, X as TwitterIcon } from 'lucide-react';
+import { ChevronUp, Github, Linkedin, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -24,18 +24,21 @@ const Footer = () => {
   const socialLinks = [
     { 
       icon: <Linkedin className="w-6 h-6" />, 
-      href: '#',
-      name: 'LinkedIn'
+      href: 'https://www.linkedin.com/in/qasim-kharodia-807951216/',
+      name: 'LinkedIn',
+      color: 'hover:from-blue-600 hover:to-blue-400'
     },
     { 
       icon: <Github className="w-6 h-6" />, 
-      href: '#',
-      name: 'GitHub'
+      href: 'https://github.com/Qasim21569',
+      name: 'GitHub',
+      color: 'hover:from-gray-600 hover:to-gray-400'
     },
     { 
-      icon: <TwitterIcon className="w-6 h-6" />, 
-      href: '#',
-      name: 'Twitter'
+      icon: <MessageCircle className="w-6 h-6" />, 
+      href: 'https://wa.me/917977801024?text=Hi%20Qasim,%20I%20would%20like%20to%20discuss%20a%20project%20with%20you.%20Let%27s%20connect!',
+      name: 'WhatsApp',
+      color: 'hover:from-green-600 hover:to-green-400'
     }
   ];
 
@@ -71,8 +74,8 @@ const Footer = () => {
             </div>
             
             <p className="font-inter text-gray-300 leading-relaxed">
-              Computer Science student & freelance web developer crafting interactive, 
-              high-impact web experiences for startups and small businesses worldwide.
+              Computer Science student & freelance web developer crafting modern, 
+              high-performance digital experiences for ambitious businesses worldwide.
             </p>
 
             <div className="flex space-x-4">
@@ -80,7 +83,9 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-300 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white transition-all duration-300 hover:scale-110 border border-gray-700/50"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-10 h-10 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-300 hover:bg-gradient-to-r ${social.color} hover:text-white transition-all duration-300 hover:scale-110 border border-gray-700/50`}
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -116,19 +121,30 @@ const Footer = () => {
             </h3>
             
             <div className="space-y-3 font-inter text-gray-300">
-              <div className="flex items-center space-x-3">
-                <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
-                <span>qasim@example.com</span>
-              </div>
+              <a 
+                href="mailto:qasimkhrd@gmail.com"
+                className="flex items-center space-x-3 hover:text-cyan-400 transition-colors duration-300 group"
+              >
+                <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse group-hover:scale-125 transition-transform duration-300"></span>
+                <span>qasimkhrd@gmail.com</span>
+              </a>
+              
+              <a 
+                href="tel:+917977801024"
+                className="flex items-center space-x-3 hover:text-purple-400 transition-colors duration-300 group"
+              >
+                <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse group-hover:scale-125 transition-transform duration-300" style={{animationDelay: '0.5s'}}></span>
+                <span>+91 7977801024</span>
+              </a>
               
               <div className="flex items-center space-x-3">
-                <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></span>
-                <span>+1 (352) XXX-XXXX</span>
+                <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" style={{animationDelay: '1s'}}></span>
+                <span>India • Remote & Available Worldwide</span>
               </div>
-              
+
               <div className="flex items-center space-x-3">
-                <span className="w-2 h-2 bg-pink-400 rounded-full animate-pulse" style={{animationDelay: '1s'}}></span>
-                <span>Remote & Available Worldwide</span>
+                <span className="w-2 h-2 bg-pink-400 rounded-full animate-pulse" style={{animationDelay: '1.5s'}}></span>
+                <span>Response within 6 hours</span>
               </div>
             </div>
 
@@ -150,15 +166,10 @@ const Footer = () => {
               © 2025 Qasim Kharodia. All Rights Reserved.
             </div>
             
-            <div className="flex space-x-6 font-inter text-sm">
-              <button className="text-gray-400 hover:text-white transition-colors duration-300 relative group">
-                Privacy Policy
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-              </button>
-              <button className="text-gray-400 hover:text-white transition-colors duration-300 relative group">
-                Terms of Service
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full"></span>
-              </button>
+            <div className="flex items-center space-x-4 font-inter text-sm text-gray-400">
+              <span>Made with ❤️ in India</span>
+              <span>•</span>
+              <span>Available Worldwide</span>
             </div>
           </div>
         </div>

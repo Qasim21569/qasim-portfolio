@@ -1,73 +1,100 @@
-# Welcome to your Lovable project
+# Q-A-S-I-M Kharodia - Portfolio Website
 
-## Project info
+A modern, interactive portfolio website showcasing my skills as a freelance web developer and Computer Science undergraduate.
 
-**URL**: https://lovable.dev/projects/d162ae8e-263d-4ebb-b84f-fa0bdafe026e
+## 🚀 Tech Stack
 
-## How can I edit this code?
+- **React 18** with TypeScript
+- **Vite** for fast development and building
+- **Tailwind CSS** for styling
+- **Framer Motion** for animations
+- **Radix UI** components
+- **React Router** for navigation
+- **React Hook Form** with Zod validation
 
-There are several ways of editing your application.
+## 🛠️ Development
 
-**Use Lovable**
+### Prerequisites
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d162ae8e-263d-4ebb-b84f-fa0bdafe026e) and start prompting.
+- Node.js (v18 or higher)
+- npm or bun
 
-Changes made via Lovable will be committed automatically to this repo.
+### Installation
 
-**Use your preferred IDE**
+```bash
+# Clone the repository
+git clone <repository-url>
+cd digital-studio-qk-portfolio
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Install dependencies
+npm install
+# or
+bun install
 ```
 
-**Edit a file directly in GitHub**
+### Running the Development Server
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run dev
+# or
+bun run dev
+```
 
-**Use GitHub Codespaces**
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Building for Production
 
-## What technologies are used for this project?
+```bash
+npm run build
+# or
+bun run build
+```
 
-This project is built with:
+### Preview Production Build
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+npm run preview
+# or
+bun run preview
+```
 
-## How can I deploy this project?
+## 📁 Project Structure
 
-Simply open [Lovable](https://lovable.dev/projects/d162ae8e-263d-4ebb-b84f-fa0bdafe026e) and click on Share -> Publish.
+```
+src/
+├── components/          # Reusable UI components
+├── pages/              # Page components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+└── main.tsx           # Application entry point
+```
 
-## Can I connect a custom domain to my Lovable project?
+## 🎨 Features
 
-Yes, you can!
+- Modern, responsive design
+- Smooth animations and transitions
+- Interactive project showcases
+- Contact form with validation
+- Dark/light theme support
+- Optimized performance
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📱 Responsive Design
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+The portfolio is fully responsive and optimized for:
+
+- Desktop (1920px+)
+- Laptop (1024px+)
+- Tablet (768px+)
+- Mobile (320px+)
+
+## 🔧 Customization
+
+The project uses Tailwind CSS for styling, making it easy to customize:
+
+- Colors in `tailwind.config.ts`
+- Fonts are loaded from Google Fonts
+- Components use shadcn/ui for consistency
+
+## 📄 License
+
+This project is for personal use. All rights reserved.
