@@ -99,7 +99,7 @@ const About = () => {
             {/* Profile Image */}
             <div className="flex justify-center lg:justify-start">
               <div className="relative group">
-                <div className="w-64 h-64 rounded-full bg-gradient-to-br from-vivid-cyan via-purple-500 to-warm-coral p-1 animate-spin-slow">
+                <div className="w-64 h-64 rounded-full bg-gradient-to-br from-vivid-cyan via-purple-500 to-warm-coral p-1">
                   <img
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
                     alt="Qasim Kharodia"

@@ -1,163 +1,176 @@
 
 import React, { useState } from 'react';
-import { X, ExternalLink, Calendar, Users, Zap } from 'lucide-react';
+import { ExternalLink, Github, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Portfolio = () => {
-  const [selectedProject, setSelectedProject] = useState<any>(null);
   const [activeFilter, setActiveFilter] = useState('All');
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const filters = ['All', 'Landing Pages', 'eCommerce', 'Web Apps', 'Animations'];
 
   const projects = [
     {
       id: 1,
-      title: 'TechStart Landing Page',
-      category: 'Landing Pages',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop',
-      challenge: 'Create a high-converting SaaS landing page that effectively communicates complex technical features to non-technical users.',
-      solution: 'Designed a clean, modern interface with interactive demos, clear value propositions, and strategic CTAs using Next.js and Framer Motion.',
-      technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript'],
+      title: "TechStart Landing Page",
+      category: "Landing Pages",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+      images: [
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1553472257-cf8ba65e6ad0?w=800&h=600&fit=crop"
+      ],
+      description: "A modern, conversion-focused landing page for a tech startup with interactive animations and optimized performance.",
+      challenge: "Create a landing page that converts visitors into leads while showcasing the startup's innovative technology.",
+      solution: "Built with Next.js and Tailwind CSS, featuring GSAP animations and optimized for Core Web Vitals.",
+      technologies: ["Next.js", "Tailwind CSS", "GSAP", "Framer Motion", "Vercel"],
       metrics: {
-        loadTime: 45,
-        conversion: 30,
-        engagement: 50
-      },
-      testimonial: {
-        text: "Qasim delivered exactly what we needed. The landing page not only looks amazing but converts 30% better than our previous design.",
-        author: "Sarah Chen",
-        role: "CEO, TechStart"
-      },
-      liveUrl: '#'
-    },
-    {
-      id: 2,
-      title: 'E-Commerce Fashion Store',
-      category: 'eCommerce',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-      challenge: 'Build a modern e-commerce platform with seamless shopping experience and advanced filtering capabilities.',
-      solution: 'Developed a full-featured online store with Shopify integration, custom product filters, and optimized checkout flow.',
-      technologies: ['React', 'Shopify API', 'Stripe', 'GSAP'],
-      metrics: {
-        loadTime: 35,
-        conversion: 25,
-        engagement: 40
-      },
-      testimonial: {
-        text: "The new store exceeded our expectations. Sales increased by 40% in the first month after launch.",
-        author: "Michael Rodriguez",
-        role: "Founder, StyleHub"
-      },
-      liveUrl: '#'
-    },
-    {
-      id: 3,
-      title: 'Interactive Portfolio Site',
-      category: 'Web Apps',
-      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop',
-      challenge: 'Create an immersive portfolio website that showcases creative work through interactive animations.',
-      solution: 'Built a dynamic portfolio with GSAP scroll animations, 3D hover effects, and smooth page transitions.',
-      technologies: ['Next.js', 'GSAP', 'Three.js', 'Tailwind CSS'],
-      metrics: {
-        loadTime: 40,
+        loadTime: 1.2,
         conversion: 35,
-        engagement: 60
-      },
-      testimonial: {
-        text: "The portfolio perfectly captures my artistic vision. It's both beautiful and functional.",
-        author: "Elena Vasquez",
-        role: "Creative Director"
-      },
-      liveUrl: '#'
-    },
-    {
-      id: 4,
-      title: 'Animated Dashboard',
-      category: 'Animations',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop',
-      challenge: 'Design an engaging admin dashboard with smooth data visualizations and micro-interactions.',
-      solution: 'Created an intuitive dashboard with animated charts, hover states, and real-time data updates.',
-      technologies: ['React', 'D3.js', 'Framer Motion', 'Chart.js'],
-      metrics: {
-        loadTime: 30,
-        conversion: 20,
         engagement: 45
       },
       testimonial: {
-        text: "The dashboard is not only functional but delightful to use. Our team productivity increased significantly.",
-        author: "David Kim",
-        role: "Product Manager"
+        text: "Qasim delivered exactly what we needed. The site looks amazing and performs even better.",
+        author: "Sarah Chen",
+        role: "Founder, TechStart"
       },
-      liveUrl: '#'
+      liveUrl: "#",
+      githubUrl: "#"
     },
     {
-      id: 5,
-      title: 'Restaurant Website',
-      category: 'Landing Pages',
-      image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=600&h=400&fit=crop',
-      challenge: 'Create an appetizing website that drives reservations and showcases the restaurant\'s atmosphere.',
-      solution: 'Designed a mouth-watering site with food photography, online reservations, and location integration.',
-      technologies: ['Next.js', 'Sanity CMS', 'Google Maps API'],
+      id: 2,
+      title: "StyleCo E-Commerce",
+      category: "eCommerce",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      images: [
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop"
+      ],
+      description: "Complete e-commerce solution with custom design, payment integration, and admin dashboard.",
+      challenge: "Build a scalable e-commerce platform that handles high traffic and provides excellent user experience.",
+      solution: "Developed using React with Stripe integration, featuring real-time inventory and order management.",
+      technologies: ["React", "Node.js", "Stripe", "MongoDB", "Express"],
       metrics: {
-        loadTime: 38,
+        loadTime: 1.8,
+        conversion: 42,
+        engagement: 55
+      },
+      testimonial: {
+        text: "Our sales increased by 60% after launching the new site. The user experience is incredible.",
+        author: "Emily Rodriguez",
+        role: "Marketing Director, StyleCo"
+      },
+      liveUrl: "#",
+      githubUrl: "#"
+    },
+    {
+      id: 3,
+      title: "InnovateTech Dashboard",
+      category: "Web Apps",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      images: [
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop"
+      ],
+      description: "Real-time analytics dashboard with interactive charts and data visualization.",
+      challenge: "Create a complex dashboard that displays real-time data in an intuitive and visually appealing way.",
+      solution: "Built with React and D3.js for data visualization, featuring real-time updates and responsive design.",
+      technologies: ["React", "D3.js", "WebSocket", "Chart.js", "TypeScript"],
+      metrics: {
+        loadTime: 2.1,
         conversion: 28,
-        engagement: 42
+        engagement: 65
       },
       testimonial: {
-        text: "Our online reservations doubled after the new website launch. The design perfectly captures our brand.",
-        author: "Maria Gonzalez",
-        role: "Restaurant Owner"
+        text: "The dashboard has transformed how we analyze our data. It's both beautiful and functional.",
+        author: "David Park",
+        role: "Product Manager, InnovateTech"
       },
-      liveUrl: '#'
+      liveUrl: "#",
+      githubUrl: "#"
     },
     {
-      id: 6,
-      title: 'Mobile Banking App',
-      category: 'Web Apps',
-      image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&h=400&fit=crop',
-      challenge: 'Develop a secure and user-friendly mobile banking interface with complex financial features.',
-      solution: 'Built a progressive web app with biometric authentication, transaction history, and budget tracking.',
-      technologies: ['React', 'PWA', 'Chart.js', 'Security APIs'],
+      id: 4,
+      title: "EcoVibe Portfolio",
+      category: "Animations",
+      image: "https://images.unsplash.com/photo-1545665277-5937750eaa38?w=600&h=400&fit=crop",
+      images: [
+        "https://images.unsplash.com/photo-1545665277-5937750eaa38?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop"
+      ],
+      description: "Animated portfolio website with scroll-triggered animations and interactive elements.",
+      challenge: "Create an engaging portfolio that showcases the client's work through creative animations.",
+      solution: "Implemented complex GSAP animations with scroll triggers and interactive hover effects.",
+      technologies: ["HTML5", "GSAP", "CSS3", "JavaScript", "Netlify"],
       metrics: {
-        loadTime: 25,
-        conversion: 45,
-        engagement: 70
+        loadTime: 1.5,
+        conversion: 38,
+        engagement: 75
       },
       testimonial: {
-        text: "The app interface is incredibly intuitive. Customer satisfaction scores improved by 40%.",
-        author: "James Wilson",
-        role: "Digital Banking Director"
+        text: "The animations bring our work to life. Visitors spend much longer on our site now.",
+        author: "Lisa Thompson",
+        role: "Founder, EcoVibe"
       },
-      liveUrl: '#'
+      liveUrl: "#",
+      githubUrl: "#"
     }
   ];
-
-  const filters = ['All', 'Landing Pages', 'eCommerce', 'Web Apps', 'Animations'];
 
   const filteredProjects = activeFilter === 'All' 
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
+  const nextImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => 
+        prev === selectedProject.images.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? selectedProject.images.length - 1 : prev - 1
+      );
+    }
+  };
+
   return (
-    <section id="portfolio" className="section-padding bg-soft-gray">
-      <div className="container-custom">
+    <section id="portfolio" className="section-padding bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 relative overflow-hidden">
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-40 left-40 w-80 h-80 bg-gradient-to-br from-rose-400 to-pink-400 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-40 right-40 w-96 h-96 bg-gradient-to-br from-purple-400 to-violet-400 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-gradient-to-br from-pink-300 to-rose-300 rounded-full blur-2xl animate-float"></div>
+      </div>
+
+      <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-playfair font-bold text-4xl lg:text-5xl text-deep-charcoal mb-6">
-            Projects that Speak Volumes
+            Featured <span className="text-gradient">Projects</span>
           </h2>
-          <p className="font-inter font-medium text-xl text-gray-600 max-w-4xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-warm-coral to-purple-500 mx-auto mb-6"></div>
+          <p className="font-inter text-lg text-gray-600 max-w-3xl mx-auto">
             A curated selection of my favorite works—each blending design finesse with technical precision.
           </p>
         </div>
 
-        {/* Filter Controls */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12 sticky top-24 z-30 bg-soft-gray py-4">
+        {/* Enhanced Filter Controls */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
               className={`px-6 py-3 rounded-full font-poppins font-medium transition-all duration-300 ${
                 activeFilter === filter
-                  ? 'bg-vivid-cyan text-pure-white shadow-lg scale-105'
-                  : 'bg-pure-white text-deep-charcoal border-2 border-vivid-cyan hover:bg-vivid-cyan hover:text-pure-white'
+                  ? 'bg-gradient-to-r from-vivid-cyan to-blue-500 text-white shadow-lg scale-105'
+                  : 'bg-white bg-opacity-70 text-gray-600 hover:bg-opacity-90 hover:text-vivid-cyan border border-gray-200'
               }`}
             >
               {filter}
@@ -165,187 +178,190 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
+        {/* Enhanced Project Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <div 
+          {filteredProjects.map((project) => (
+            <div
               key={project.id}
-              className="card-hover bg-pure-white rounded-xl overflow-hidden shadow-lg group cursor-pointer"
-              style={{
-                animationDelay: `${index * 0.1}s`
+              className="group relative bg-white bg-opacity-80 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-105"
+              onClick={() => {
+                setSelectedProject(project);
+                setCurrentImageIndex(0);
               }}
-              onClick={() => setSelectedProject(project)}
             >
               {/* Project Image */}
-              <div className="relative overflow-hidden h-48">
-                <img 
-                  src={project.image} 
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-deep-charcoal/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-2 h-8 bg-warm-coral"></div>
+                  <ExternalLink className="w-6 h-6 text-white" />
                 </div>
               </div>
 
               {/* Project Info */}
-              <div className="p-6 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="inline-block bg-vivid-cyan text-pure-white px-3 py-1 rounded-full text-sm font-poppins font-medium">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="px-3 py-1 bg-gradient-to-r from-vivid-cyan to-blue-500 text-white text-sm font-poppins font-medium rounded-full">
                     {project.category}
                   </span>
-                  <div className="text-warm-coral group-hover:translate-x-1 transition-transform duration-300">
-                    <ExternalLink className="w-5 h-5" />
-                  </div>
                 </div>
-
-                <h3 className="font-poppins font-semibold text-xl text-deep-charcoal group-hover:text-vivid-cyan transition-colors duration-300">
+                <h3 className="font-poppins font-semibold text-xl text-deep-charcoal mb-3 group-hover:text-vivid-cyan transition-colors duration-300">
                   {project.title}
                 </h3>
-
-                <div className="flex items-center space-x-2 text-warm-coral">
-                  <span className="font-inter font-bold text-sm">View Case Study</span>
-                  <div className="transform group-hover:rotate-12 transition-transform duration-300">→</div>
-                </div>
+                <p className="font-inter text-gray-600 text-sm leading-relaxed">
+                  {project.description}
+                </p>
               </div>
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Case Study Modal */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div 
-            className="absolute inset-0 bg-deep-charcoal/85 backdrop-blur-sm"
-            onClick={() => setSelectedProject(null)}
-          ></div>
-          
-          <div className="relative bg-pure-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-6 right-6 z-10 w-12 h-12 bg-pure-white rounded-full flex items-center justify-center shadow-lg hover:bg-warm-coral hover:text-pure-white transition-all duration-300"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            <div className="grid lg:grid-cols-5 gap-8 p-8">
-              {/* Left Column - Project Details */}
-              <div className="lg:col-span-3 space-y-8">
-                {/* Hero Image */}
-                <div className="rounded-xl overflow-hidden">
-                  <img 
-                    src={selectedProject.image} 
-                    alt={selectedProject.title}
-                    className="w-full h-64 object-cover"
-                  />
-                </div>
-
-                {/* Challenge & Goals */}
-                <div className="space-y-4">
-                  <h3 className="font-playfair font-bold text-2xl text-deep-charcoal">
-                    Challenge & Goals
-                  </h3>
-                  <p className="font-inter text-gray-600 leading-relaxed">
-                    {selectedProject.challenge}
-                  </p>
-                </div>
-
-                {/* Solution & Tech */}
-                <div className="space-y-4">
-                  <h3 className="font-poppins font-semibold text-xl text-deep-charcoal">
-                    Solution & Tech
-                  </h3>
-                  <p className="font-inter text-gray-600 leading-relaxed mb-4">
-                    {selectedProject.solution}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.technologies.map((tech: string, index: number) => (
-                      <span 
-                        key={index}
-                        className="bg-vivid-cyan text-pure-white px-3 py-1 rounded-lg text-sm font-poppins font-medium"
-                        style={{ animationDelay: `${index * 0.1}s` }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+        {/* Enhanced Case Study Modal */}
+        {selectedProject && (
+          <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center z-10">
+                <h3 className="font-playfair font-bold text-2xl text-deep-charcoal">
+                  {selectedProject.title}
+                </h3>
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors duration-300"
+                >
+                  <X className="w-5 h-5 text-gray-600" />
+                </button>
               </div>
 
-              {/* Right Column - Metrics & Testimonial */}
-              <div className="lg:col-span-2 space-y-6">
-                {/* Metrics */}
-                <div className="space-y-4">
-                  <h3 className="font-poppins font-semibold text-xl text-deep-charcoal">
-                    Results
-                  </h3>
-                  
+              <div className="p-6 grid lg:grid-cols-2 gap-8">
+                {/* Left Column - Images & Details */}
+                <div className="space-y-6">
+                  {/* Image Carousel */}
+                  <div className="relative">
+                    <img
+                      src={selectedProject.images[currentImageIndex]}
+                      alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
+                      className="w-full h-64 object-cover rounded-lg"
+                    />
+                    {selectedProject.images.length > 1 && (
+                      <>
+                        <button
+                          onClick={prevImage}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black bg-opacity-50 rounded-full flex items-center justify-center text-white hover:bg-opacity-70 transition-colors duration-300"
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={nextImage}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black bg-opacity-50 rounded-full flex items-center justify-center text-white hover:bg-opacity-70 transition-colors duration-300"
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      </>
+                    )}
+                    {/* Dots Indicator */}
+                    {selectedProject.images.length > 1 && (
+                      <div className="flex justify-center space-x-2 mt-4">
+                        {selectedProject.images.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentImageIndex(index)}
+                            className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                              index === currentImageIndex ? 'bg-vivid-cyan' : 'bg-gray-300'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Challenge & Solution */}
                   <div className="space-y-4">
-                    <div className="bg-pure-white rounded-lg p-4 shadow-md border border-soft-gray">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <Zap className="w-6 h-6 text-vivid-cyan" />
-                        <span className="font-inter font-medium text-deep-charcoal">Load Time</span>
-                      </div>
-                      <div className="font-inter font-bold text-3xl text-vivid-cyan">
-                        ↓ {selectedProject.metrics.loadTime}%
-                      </div>
+                    <div>
+                      <h4 className="font-poppins font-semibold text-lg text-deep-charcoal mb-2">Challenge</h4>
+                      <p className="font-inter text-gray-600">{selectedProject.challenge}</p>
                     </div>
-
-                    <div className="bg-pure-white rounded-lg p-4 shadow-md border border-soft-gray">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <Users className="w-6 h-6 text-warm-coral" />
-                        <span className="font-inter font-medium text-deep-charcoal">Conversion</span>
-                      </div>
-                      <div className="font-inter font-bold text-3xl text-warm-coral">
-                        ↑ {selectedProject.metrics.conversion}%
-                      </div>
+                    <div>
+                      <h4 className="font-poppins font-semibold text-lg text-deep-charcoal mb-2">Solution</h4>
+                      <p className="font-inter text-gray-600">{selectedProject.solution}</p>
                     </div>
+                  </div>
 
-                    <div className="bg-pure-white rounded-lg p-4 shadow-md border border-soft-gray">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <Calendar className="w-6 h-6 text-vivid-cyan" />
-                        <span className="font-inter font-medium text-deep-charcoal">Engagement</span>
-                      </div>
-                      <div className="font-inter font-bold text-3xl text-vivid-cyan">
-                        ↑ {selectedProject.metrics.engagement}%
-                      </div>
+                  {/* Technologies */}
+                  <div>
+                    <h4 className="font-poppins font-semibold text-lg text-deep-charcoal mb-3">Technologies Used</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.technologies.map((tech, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-gradient-to-r from-vivid-cyan to-blue-500 text-white text-sm font-poppins font-medium rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
 
-                {/* Testimonial */}
-                <div className="bg-soft-gray rounded-lg p-6">
-                  <div className="text-warm-coral text-4xl mb-4">"</div>
-                  <p className="font-inter italic text-lg text-deep-charcoal mb-4 leading-relaxed">
-                    {selectedProject.testimonial.text}
-                  </p>
-                  <div className="border-t border-gray-300 pt-4">
-                    <div className="font-poppins font-semibold text-deep-charcoal">
+                {/* Right Column - Metrics & Testimonial */}
+                <div className="space-y-6">
+                  {/* Metrics */}
+                  <div className="space-y-4">
+                    <h4 className="font-poppins font-semibold text-lg text-deep-charcoal">Project Impact</h4>
+                    <div className="grid grid-cols-1 gap-4">
+                      <div className="bg-gradient-to-br from-vivid-cyan to-blue-500 rounded-lg p-4 text-white text-center">
+                        <div className="text-2xl font-playfair font-bold">{selectedProject.metrics.loadTime}s</div>
+                        <div className="text-sm font-inter">Load Time</div>
+                      </div>
+                      <div className="bg-gradient-to-br from-warm-coral to-pink-500 rounded-lg p-4 text-white text-center">
+                        <div className="text-2xl font-playfair font-bold">+{selectedProject.metrics.conversion}%</div>
+                        <div className="text-sm font-inter">Conversion Rate</div>
+                      </div>
+                      <div className="bg-gradient-to-br from-purple-500 to-violet-500 rounded-lg p-4 text-white text-center">
+                        <div className="text-2xl font-playfair font-bold">+{selectedProject.metrics.engagement}%</div>
+                        <div className="text-sm font-inter">User Engagement</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Testimonial */}
+                  <div className="bg-gray-50 rounded-lg p-6">
+                    <h4 className="font-poppins font-semibold text-lg text-deep-charcoal mb-3">Client Feedback</h4>
+                    <blockquote className="font-inter text-gray-600 italic mb-4">
+                      "{selectedProject.testimonial.text}"
+                    </blockquote>
+                    <div className="font-poppins font-medium text-deep-charcoal">
                       {selectedProject.testimonial.author}
                     </div>
-                    <div className="font-inter text-gray-600 text-sm">
+                    <div className="font-inter text-sm text-gray-500">
                       {selectedProject.testimonial.role}
                     </div>
                   </div>
-                </div>
 
-                {/* Live Site Button */}
-                <button 
-                  onClick={() => window.open(selectedProject.liveUrl, '_blank')}
-                  className="w-full btn-primary flex items-center justify-center space-x-2"
-                >
-                  <ExternalLink className="w-5 h-5" />
-                  <span>View Live Site</span>
-                </button>
+                  {/* Action Buttons */}
+                  <div className="flex space-x-4">
+                    <a
+                      href={selectedProject.liveUrl}
+                      className="flex-1 bg-gradient-to-r from-vivid-cyan to-blue-500 text-white px-6 py-3 rounded-lg font-poppins font-medium text-center hover:shadow-lg transition-shadow duration-300"
+                    >
+                      View Live Site
+                    </a>
+                    <a
+                      href={selectedProject.githubUrl}
+                      className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-300"
+                    >
+                      <Github className="w-5 h-5 text-gray-600" />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 };
