@@ -37,11 +37,11 @@ const Portfolio = () => {
     {
       id: 1,
       title: "MVRK",
-      image: "./mvrk/main.png",
+      image: "/images/portfolio/mvrk/main.png",
       images: [
-        "./mvrk/screen1.png",
-        "./mvrk/screen2.png",
-        "./mvrk/screen3.png"
+        "/images/portfolio/mvrk/screen1.png",
+        "/images/portfolio/mvrk/screen2.png",
+        "/images/portfolio/mvrk/screen3.png"
       ],
       description: "Professional website for a Salesforce consultant firm, designed to match their brand theme and establish a strong online presence in the competitive consulting market.",
       challenge: "Create a sophisticated, brand-aligned website that effectively communicates MVRK's Salesforce expertise while building trust with potential enterprise clients and establishing credible online presence.",
@@ -63,11 +63,11 @@ const Portfolio = () => {
     {
       id: 2,
       title: "Flat Rate Bookkeeping",
-      image: "./flatrate/main.png",
+      image: "/images/portfolio/flatrate/main.png",
       images: [
-        "./flatrate/screen1.png",
-        "./flatrate/screen2.png",
-        "./flatrate/screen3.png"
+        "/images/portfolio/flatrate/screen1.png",
+        "/images/portfolio/flatrate/screen2.png",
+        "/images/portfolio/flatrate/screen3.png"
       ],
       description: "Comprehensive website for a Melbourne, Florida-based accounting firm featuring minimalistic design, multiple service pages, and integrated booking system to drive user signups and increase traffic.",
       challenge: "Design a trustworthy, professional platform for a growing accounting firm that needed to increase online visibility, streamline client acquisition, and provide clear service information across multiple pages while maintaining fast load times.",
@@ -89,11 +89,11 @@ const Portfolio = () => {
     {
       id: 3,
       title: "AlgoForge Tech",
-      image: "./algoforge/main.png",
+      image: "/images/portfolio/algoforge/main.png",
       images: [
-        "./algoforge/screen1.png",
-        "./algoforge/screen2.png",
-        "./algoforge/screen3.png"
+        "/images/portfolio/algoforge/screen1.png",
+        "/images/portfolio/algoforge/screen2.png",
+        "/images/portfolio/algoforge/screen3.png"
       ],
       description: "Cutting-edge website for a tech hackathon event, featuring cyber-themed design with heavy animations and immersive 3D elements to create an engaging experience for participants and sponsors.",
       challenge: "Create an innovative, cyber-themed platform for a tech hackathon that would captivate developers and tech enthusiasts while providing comprehensive event information and maintaining smooth performance despite heavy animations.",
@@ -115,11 +115,11 @@ const Portfolio = () => {
     {
       id: 4,
       title: "Thrive Physios",
-      image: "./thrive/main.png",
+      image: "/images/portfolio/thrive/main.png",
       images: [
-        "./thrive/screen1.png",
-        "./thrive/screen2.png",
-        "./thrive/screen3.png"
+        "/images/portfolio/thrive/screen1.png",
+        "/images/portfolio/thrive/screen2.png",
+        "/images/portfolio/thrive/screen3.png"
       ],
       description: "Modern healthcare website for a group of physiotherapists focused on building online presence and increasing online session bookings through intuitive design and medicine-themed aesthetics.",
       challenge: "Design a trustworthy healthcare platform that would increase online physiotherapy session bookings while building credibility and providing easy access to services for patients seeking physical therapy.",
@@ -141,11 +141,11 @@ const Portfolio = () => {
     {
       id: 5,
       title: "PBX Pickle",
-      image: "./pbx/main.png",
+      image: "/images/portfolio/pbx/main.png",
       images: [
-        "./pbx/screen1.png",
-        "./pbx/screen2.png",
-        "./pbx/screen3.png"
+        "/images/portfolio/pbx/screen1.png",
+        "/images/portfolio/pbx/screen2.png",
+        "/images/portfolio/pbx/screen3.png"
       ],
       description: "Dynamic e-commerce website for a Chicago-based pickleball apparel brand with a mission of 'pickleball for all athletes, including those with disabilities,' featuring sporty design and inclusive messaging.",
       challenge: "Create an inclusive, sporty e-commerce platform for a Chicago-based pickleball apparel company that promotes accessibility in sports while providing seamless shopping experience and showcasing their mission-driven brand values.",
@@ -236,7 +236,7 @@ const Portfolio = () => {
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     console.error(`Failed to load image: ${target.src}`);
-                    target.src = './placeholder.svg';
+                    target.src = '/placeholder.svg';
                     target.onerror = null;
                   }}
                 />
@@ -353,7 +353,7 @@ const Portfolio = () => {
                               onError={(e) => {
                                 const target = e.target as HTMLImageElement;
                                 console.error(`Failed to load image: ${target.src}`);
-                                target.src = './placeholder.svg';
+                                target.src = '/placeholder.svg';
                                 target.onerror = null;
                               }}
                             />
